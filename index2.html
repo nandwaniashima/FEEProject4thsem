@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<style>
+    .list1:hover {
+            cursor: pointer; 
+            font-weight: bold; 
+            text-decoration: underline; 
+            text-decoration-thickness: 2px; 
+            text-decoration-color: rgb(224, 173, 78); 
+        }
+        .bullet {
+            display: grid;
+            grid-template-columns: repeat(2, 300px);
+            grid-gap: 30px;
+            padding: 0;
+        }
+        .bullet li {
+            list-style-type: circle;
+            color: rgba(47, 44, 44, 0.84); 
+            margin-left: 30px;
+        }
+        .input:hover{
+            border-color: #173b18; 
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+        .bg-slate-300:hover{
+            background-color: #1c593f;
+        }
+        .bg-slate-300:hover i {
+            color: #ffffff; 
+        }
+        #panel, #flip {
+            padding: 5px;
+            border: solid 1px #c3c3c3;
+        }
+        #panel, #panel1 {
+            padding: 10px;
+            display: none;
+        }
+        #panel input[type="text"],#panel1 input[type="text"],#panel2 input[type="text"] {
+            border: 1px solid #ccc;
+            padding: 8px;
+            margin-bottom: 10px;
+            width: 300px;
+            font-size: small;
+            margin-right: 10px;
+        }
+        #panel1 i.fa-brands {
+            font-size: 23px; 
+            margin-right: 15px; 
+        }
+        #panel1, #flip1{
+            padding: 5px;
+            border: solid 1px #c3c3c3;
+        }
+        #panel1 {
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+        #panel2, #flip2 {
+            padding: 5px;
+            border: solid 1px #c3c3c3;
+        }
+        #panel2 {
+            padding: 10px;
+            display: none;
+        }
+        .iconc {
+            position: relative;
+        }
+
+        .iconc input[type="text"] {
+            padding-left: 30px;
+        }
+
+        .iconc .icon {
+            position: absolute;
+            left: 275px; 
+            top: 20%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color:rgba(0,0,0,0.4); 
+        }
+        /* Modal content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; 
+            padding: 20px;
+            border: 1px solid #888;
+            width: 40%; 
+            text-align: center;
+        }
+        .modal-content {
+            display: flex;
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+        }
+        .modal-content img {
+            margin-bottom: 10px; 
+        }
+        .success-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            z-index: 9999;
+        }
+</style>
+<body class="bg-zinc-100">
+    <div>
+        <div>
+            <form></form>
+
+        <h1 class=" mt-10 ml-16 text-3xl font-medium mb-2">Address Details</h1>
+        <div class="flex mb-32">
+            <div class="w-1/2 p-4 bg-white shadow-md ml-16 mr-5">
+      <form>
+        <div class="mb-4 flex">
+            <div class="w-1/2 mr-2">
+                <label for="first_name" class="block font-medium">First Name *</label>
+                <input type="text" id="first_name" name="first_name" class="w-full border border-gray-300 rounded-md py-2 px-3" >
+              </div>
+            </div>
+              <div class="w-1/2 ml-2">
+                <label for="last_name" class="block font-medium">Last Name *</label>
+                <input type="text" id="last_name" name="last_name" class="w-full border border-gray-300 rounded-md py-2 px-3" >
+              </div>
+            
+        <div class="mb-4">
+          <label for="country" class="block font-medium mt-5">Country *</label>
+          <select id="country" name="country" class="w-full border border-gray-300 rounded-md py-2 px-3">
+            <option value="Select a Country">Select a country</option>
+            <option value="US">United States</option>
+            <option value="CA">Canada</option>
+            <option value="CA">India</option>
+            <option value="UK">United Kingdom</option>
+            <option value="JP">Japan</option>
+          </select>
+        </div>
+       
+        <div class="mb-4">
+          <label for="address" class="block font-medium">Address *</label>
+          <input type="text" id="address" name="address" class="w-full border border-gray-300 rounded-md py-2 px-3 mb-2" placeholder="Street Address">
+          <input type="text" id="address" name="address" class="w-full border border-gray-300 rounded-md py-2 px-3" placeholder="Apartment, suite, unit etc.(Optional)">
+        </div>
+        <div class="mb-4 flex">
+            <div class="w-1/2 pr-2">
+                <label for="state_country" class="block font-medium">State / Country *</label>
+                <input type="text" id="state_country" name="state_country" class="w-full border border-gray-300 rounded-md py-2 px-3">
+            </div>
+            <div class="w-1/2 pl-2">
+                <label for="postal_zip" class="block font-medium">Postal / Zip *</label>
+                <input type="text" id="postal_zip" name="postal_zip" class="w-full border border-gray-300 rounded-md py-2 px-3">
+            </div>
+        </div>
+        <div class="mb-4 flex">
+            <div class="w-1/2 pr-2">
+                <label for="email" class="block font-medium">Email Address *</label>
+                <input type="email" id="email" name="email" class="w-full border border-gray-300 rounded-md py-2 px-3">
+            </div>
+            <div class="w-1/2 pl-2">
+                <label for="phone" class="block font-medium">Phone *</label>
+                <input type="tel" id="phone" name="phone" class="w-full border border-gray-300 rounded-md py-2 px-3" placeholder="Phone Number">
+            </div>
+        </div>
+        <div class="mb-4">
+          <label for="create_account" class="inline-flex items-center">
+            <input type="checkbox" id="create_account" name="create_account" class="rounded border-gray-300 text-blue-500 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+            <span class="ml-2">Create an account?</span>
+          </label>
+        </div>
+       
+      </form>
+        </div>
+
+        <div class="w-1/2 mr-16">
+           
+            <h1 class="mt-12 ml-2 text-3xl font-medium mb-2">Order Details</h1>
+            <div class="bg-white shadow-md p-4">
+            <table class="border-collapse w-full mt-5">
+                <thead>
+                    <tr>
+                       
+                        <td class="font-bold px-4 py-2">Total</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="border-b border-black "></td>
+                    </tr>
+                </thead>
+                <tbody>
+                 
+                    <tr>
+                        <td colspan="2" class="border-b border-gray-300 "></td>
+                    </tr>
+                    <tr>
+                        <td class="px-4 py-2 font-bold" id="totalPrice"></td>
+                        <td class="px-4 py-2"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="border-b border-gray-300"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="mt-10">
+            <div id="flip" class="font-semibold h-[40px] underline cursor-pointer">Credit/Debit Card</div>
+            <div id="panel"><p class="mb-1">Please ensure that your card is used for online transaction.</p>
+                <div class="iconc">
+                <span class="icon">
+                    <i class="fa-solid fa-credit-card"></i>
+                </span>
+            <input type="text" id="cardNo" placeholder="Card No">
+            <input type="text" id="nameOnCard" placeholder="Name on Card">
+            <input type="text" id="validthru" placeholder="Valid Thru(MM/YY)">
+            <input type="text" id="CVV" placeholder="CVV"></div></div>
+
+            <div id="flip1" class="font-semibold h-[40px] mt-5 underline cursor-pointer">UPI</div>
+            <div id="panel1"><input type="text" id="upi" placeholder="Enter UPI ID here"><i class="fa-brands fa-google-pay"></i><i class="fa-brands fa-paypal"></i></div>
+
+            <div id="flip2" class="font-semibold mt-5 h-[40px] underline cursor-pointer">Cash on Delivery</div>
+            <div id="panel2" class="text-gray-500">Cash on delivery available for minimum order of $250 and above<i class="fa-solid fa-money-check-dollar ml-5 text-xl"></i></div>
+            </div>
+            <button id="placeOrderBtn" class="text-white bg-gray-900 mt-10 px-10 text-center ml-2 py-3 rounded-full font-semibold">Place Order</button>
+            <div id="orderModal" class="modal">
+                <div class="modal-content">
+                    <img src="Images/load.jpeg" width="50" height="50">
+                    <p>Please wait while your order is being placed.</p>
+                </div>
+            </div>
+        </div>    
+        </div>
+    </div>
+</form> 
+    <script src="js/pay.js"></script>
+</body>
+</html>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Category Filter</title>
+    <link rel = "stylesheet" href = "css/style1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Function to get query parameters
+            function getQueryParams() {
+                const params = {};
+                window.location.search.substring(1).split("&").forEach(pair => {
+                    const [key, value] = pair.split("=");
+                    params[key] = decodeURIComponent(value);
+                });
+                return params;
+            }
+
+            // Get query parameters
+            const params = getQueryParams();
+
+            // If category parameter exists, trigger the respective filter button
+            if (params.category) {
+                const filterBtn = document.getElementById(params.category);
+                if (filterBtn) {
+                    filterBtn.click();
+                }
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class = "wrapper">
+        <div class = "category-filter">
+            <div class = "container">
+                <header>
+                <div class = "title">
+                    <h1>Featured Products</h1>
+                </div>
+                <div class="shopping">
+                    <img src="images/shopping-bag.png" alt="">
+                    <span class="quantity">0</span>
+                </div>
+                </header>
+            </div>
+            <div class="list"></div>
+     <div class="card">
+        <div style="display: flex;align-items: center;justify-content: space-between;">
+            <h1>Cart</h1>
+            <div class="close-icon" style="margin-right: 20px; cursor: pointer;">
+                <i class="fa fa-times"></i>
+            </div>
+        </div>
+        <ul class="listCard"></ul>
+        <div class="checkOut">
+            <div class="total">$0</div>
+            <div class="closeShopping">
+                <a href="index2.html">Proceed to pay</a>
+            </div>
+        </div>
+    </div>
+                <div class = "filter-btns">
+                    <button type = "button" class = "filter-btn" id = "all">all</button>
+                    <button type = "button" class = "filter-btn" id = "vegetables">Vegetables</button>
+                    <button type = "button" class = "filter-btn" id = "fruits">Fruits</button>
+                    <button type = "button" class = "filter-btn" id = "baby">Baby products</button>
+                    <button type = "button" class = "filter-btn" id = "office">Office products</button>
+                    <button type = "button" class = "filter-btn" id = "non-veg">Non-veg</button>
+                    <button type = "button" class = "filter-btn" id = "beauty">Beauty products</button>
+                </div>
+
+                <div class = "filter-items">
+                    <div class = "filter-item all vegetables" id="Tomato">
+                        <div class = "item-img">
+                            <img src = "images/tomato.jpeg" alt = "Item image">
+                            <span class = "discount">20%</span>
+                        </div>
+                        <div class = "item-info">
+                            <p>Tomato</p>
+                            <div>
+                                <span class = "old-price">$20.50</span>
+                                <span class = "new-price">$16.70</span>
+                            </div>
+                            <a href = "#" class ="add-btn"  onclick="abc('cabbage')">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    <div class = "filter-item all vegetables" id="Carrot">
+                        <div class = "item-img">
+                            <img src = "images/carrot.jpeg" alt = "Item image">
+                            <span class = "discount">20%</span>
+                        </div>
+                        <div class = "item-info">
+                            <p>Carrot</p>
+                            <div>
+                                <span class = "old-price">$20.50</span>
+                                <span class = "new-price">$16.70</span>
+                            </div>
+                            <a href = "#" class ="add-btn"  onclick="abc('cabbage')">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    <div class = "filter-item all vegetables" id="Potato">
+                        <div class = "item-img">
+                            <img src = "images/potato.png" alt = "Item image">
+                            <span class = "discount">20%</span>
+                        </div>
+                        <div class = "item-info">
+                            <p>Potato</p>
+                            <div>
+                                <span class = "old-price">$20.50</span>
+                                <span class = "new-price">$16.70</span>
+                            </div>
+                            <a href = "#" class ="add-btn"  onclick="abc('cabbage')">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    
+
+                    <div class = "filter-item all vegetables" id="Onion">
+                        <div class = "item-img">
+                            <img src = "images/onion.jpeg" alt = "Item image">
+                            <span class = "discount">25%</span>
+                        </div>
+                        <div class = "item-info">
+                            <p>Onion</p>
+                            <div>
+                                <span class = "old-price">$5.22</span>
+                                <span class = "new-price">$3.99</span>
+                            </div>
+                            <a href = "#" class ="add-btn" onclick="abc('onion')">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    <div class = "filter-item all fruits" id="Grapes">
+                        <div class = "item-img">
+                            <img src = "images/grapes.png" alt = "Item image">
+                            <span class = "discount">15%</span>
+                        </div>
+                        <div class = "item-info">
+                            <p>Grapes</p>
+                            <div>
+                                <span class = "old-price">$20.50</span>
+                                <span class = "new-price">$17</span>
+                            </div>
+                            <a href = "#" class ="add-btn" onclick="abc('apple')">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    <div class = "filter-item all fruits" id="apple">
+                        <div class = "item-img">
+                            <img src = "images/apple.png" alt = "Item image">
+                            <span class = "discount">15%</span>
+                        </div>
+                        <div class = "item-info">
+                            <p>Apple</p>
+                            <div>
+                                <span class = "old-price">$20.50</span>
+                                <span class = "new-price">$17</span>
+                            </div>
+                            <a href = "#" class ="add-btn" onclick="abc('apple')">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    <div class = "filter-item all fruits" id="mango">
+                        <div class = "item-img">
+                            <img src = "images/mango.jpeg" alt = "Item image">
+                            <span class = "discount">15%</span>
+                        </div>
+                        <div class = "item-info">
+                            <p>Mango</p>
+                            <div>
+                                <span class = "old-price">$20.50</span>
+                                <span class = "new-price">$17</span>
+                            </div>
+                            <a href = "#" class ="add-btn" onclick="abc('apple')">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    <div class = "filter-item all fruits" id="orange">
+                        <div class = "item-img">
+                            <img src = "images/orange.jpeg" alt = "Item image">
+                            <span class = "discount">10%</span>
+                        </div>
+                        <div class = "item-info">
+                            <p>Orange</p>
+                            <div>
+                                <span class = "old-price">$15.50</span>
+                                <span class = "new-price">$14.33</span>
+                            </div>
+                            <a href = "#" class ="add-btn" onclick="abc('grapes')">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    <div class = "filter-item all baby" id="baby1">
+                        <div class = "item-img">
+                            <img src = "images/baby1.jpeg" alt = "Item image">
+                            <span class = "discount">30%</span>
+                        </div>
+                        <div class = "item-info">
+                            <p>Baby Shampoo</p>
+                            <div>
+                                <span class = "old-price">$50.11</span>
+                                <span class = "new-price">$35</span>
+                            </div>
+                            <a href = "#" class ="add-btn" onclick="abc('baby1')">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    <div class = "filter-item all baby" id="baby1">
+                        <div class = "item-img">
+                            <img src = "images/pants.jpeg" alt = "Item image">
+                            <span class = "discount">30%</span>
+                        </div>
+                        <div class = "item-info">
+                            <p>Baby Pants</p>
+                            <div>
+                                <span class = "old-price">$50.11</span>
+                                <span class = "new-price">$35</span>
+                            </div>
+                            <a href = "#" class ="add-btn" onclick="abc('baby1')">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    <div class = "filter-item all baby" id="baby1">
+                        <div class = "item-img">
+                            <img src = "images/wipes.jpeg" alt = "Item image">
+                            <span class = "discount">30%</span>
+                        </div>
+                        <div class = "item-info">
+                            <p>Baby Wipes</p>
+                            <div>
+                                <span class = "old-price">$50.11</span>
+                                <span class = "new-price">$35</span>
+                            </div>
+                            <a href = "#" class ="add-btn" onclick="abc('baby1')">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    <div class = "filter-item all baby" id="baby2">
+                        <div class = "item-img">
+                            <img src = "images/soap.jpeg" alt = "Item image">
+                            <span class = "discount">20%</span>
+                        </div>
+                        <div class = "item-info">
+                            <p>Baby Soap</p>
+                            <div>
+                                <span class = "old-price">$33</span>
+                                <span class = "new-price">$26.4</span>
+                            </div>
+                            <a href = "#" class ="add-btn" onclick="abc('baby2')">Add to Cart</a>
+                        </div>
+                    </div>
+                    
+                    <div class = "filter-item all office" id="office1">
+                        <div class = "item-img">
+                            <img src = "images/office.jpeg" alt = "Item image">
+                            <span class = "discount">20%</span>
+                        </div>
+                        <div class = "item-info">
+                            <p>Organizer</p>
+                            <div>
+                                <span class = "old-price">$70.50</span>
+                                <span class = "new-price">$40.70</span>
+                            </div>
+                            <a href = "#" class ="add-btn" onclick="abc('office1')">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    <div class = "filter-item all office" id="office1">
+                        <div class = "item-img">
+                            <img src = "images/puncher.jpeg" alt = "Item image">
+                            <span class = "discount">20%</span>
+                        </div>
+                        <div class = "item-info">
+                            <p>Puncher</p>
+                            <div>
+                                <span class = "old-price">$70.50</span>
+                                <span class = "new-price">$40.70</span>
+                            </div>
+                            <a href = "#" class ="add-btn" onclick="abc('office1')">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    <div class = "filter-item all office" id="office1">
+                        <div class = "item-img">
+                            <img src = "images/file.jpeg" alt = "Item image">
+                            <span class = "discount">20%</span>
+                        </div>
+                        <div class = "item-info">
+                            <p>Project File</p>
+                            <div>
+                                <span class = "old-price">$70.50</span>
+                                <span class = "new-price">$40.70</span>
+                            </div>
+                            <a href = "#" class ="add-btn" onclick="abc('office1')">Add to Cart</a>
+                        </div>
+                    </div>
+                    
+                    <div class = "filter-item all office" id="office2">
+                        <div class = "item-img">
+                            <img src = "images/o1.jpeg" alt = "Item image">
+                            <span class = "discount">20%</span>
+                        </div>
+                        <div class = "item-info">
+                            <p>Markers</p>
+                            <div>
+                                <span class = "old-price">$20.50</span>
+                                <span class = "new-price">$16.70</span>
+                            </div>
+                            <a href = "#" class ="add-btn" onclick="abc('office2')">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    <div class = "filter-item all non-veg" id="non-veg-1">
+                        <div class = "item-img">
+                            <img src = "images/pack.jpeg" alt = "Item image">
+                            <span class = "discount">20%</span>
+                        </div>
+                        <div class = "item-info">
+                            <p>Chicken Chili Salami</p>
+                            <div>
+                                <span class = "old-price">$70.50</span>
+                                <span class = "new-price">$50.70</span>
+                            </div>
+                            <a href = "#" class ="add-btn" onclick="abc('nonveg1')">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    <div class = "filter-item all non-veg" id="non-veg-1">
+                        <div class = "item-img">
+                            <img src = "images/momos.jpeg" alt = "Item image">
+                            <span class = "discount">20%</span>
+                        </div>
+                        <div class = "item-info">
+                            <p>Chicken Momos</p>
+                            <div>
+                                <span class = "old-price">$70.50</span>
+                                <span class = "new-price">$50.70</span>
+                            </div>
+                            <a href = "#" class ="add-btn" onclick="abc('nonveg1')">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    <div class = "filter-item all non-veg" id="non-veg-1">
+                        <div class = "item-img">
+                            <img src = "images/n3.jpeg" alt = "Item image">
+                            <span class = "discount">20%</span>
+                        </div>
+                        <div class = "item-info">
+                            <p>Fish</p>
+                            <div>
+                                <span class = "old-price">$70.50</span>
+                                <span class = "new-price">$50.70</span>
+                            </div>
+                            <a href = "#" class ="add-btn" onclick="abc('nonveg1')">Add to Cart</a>
+                        </div>
+                    </div>
+                    
+                    <div class = "filter-item all non-veg" id="non-veg-2">
+                        <div class = "item-img">
+                            <img src = "images/WhatsApp Image 2024-05-23 at 14.57.07.jpeg" alt = "Item image">
+                            <span class = "discount">20%</span>
+                        </div>
+                        <div class = "item-info">
+                            <p>Fresh aquatic tuna</p>
+                            <div>
+                                <span class = "old-price">$20.50</span>
+                                <span class = "new-price">$16.70</span>
+                            </div>
+                            <a href = "#" class ="add-btn" onclick="abc('nonveg2')">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    
+                    <div class = "filter-item all beauty" id="beauty1">
+                        <div class = "item-img">
+                            <img src = "images/lip.jpeg" alt = "Item image">
+                            <span class = "discount">10%</span>
+                        </div>
+                        <div class = "item-info">
+                            <p>Lip liner</p>
+                            <div>
+                                <span class = "old-price">$100</span>
+                                <span class = "new-price">$90</span>
+                            </div>
+                            
+                            <a href = "#" class ="add-btn" onclick="abc('beauty1')">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    <div class = "filter-item all beauty" id="beauty1">
+                        <div class = "item-img">
+                            <img src = "images/found.jpg" alt = "Item image">
+                            <span class = "discount">10%</span>
+                        </div>
+                        <div class = "item-info">
+                            <p>Foundation</p>
+                            <div>
+                                <span class = "old-price">$100</span>
+                                <span class = "new-price">$90</span>
+                            </div>
+                            
+                            <a href = "#" class ="add-btn" onclick="abc('beauty1')">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    <div class = "filter-item all beauty" id="beauty1">
+                        <div class = "item-img">
+                            <img src = "images/lips.jpeg" alt = "Item image">
+                            <span class = "discount">10%</span>
+                        </div>
+                        <div class = "item-info">
+                            <p>Lipstick</p>
+                            <div>
+                                <span class = "old-price">$100</span>
+                                <span class = "new-price">$90</span>
+                            </div>
+                            
+                            <a href = "#" class ="add-btn" onclick="abc('beauty1')">Add to Cart</a>
+                        </div>
+                    </div>
+
+                    <div class = "filter-item all beauty" id="beauty1">
+                        <div class = "item-img">
+                            <img src = "images/cream.jpeg" alt = "Item image">
+                            <span class = "discount">10%</span>
+                        </div>
+                        <div class = "item-info">
+                            <p>Body Lotion</p>
+                            <div>
+                                <span class = "old-price">$100</span>
+                                <span class = "new-price">$90</span>
+                            </div>
+                            
+                            <a href = "#" class ="add-btn" onclick="abc('beauty1')">Add to Cart</a>
+                        </div>
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src = "js/script2.js"></script>
+</body>
+</html>
